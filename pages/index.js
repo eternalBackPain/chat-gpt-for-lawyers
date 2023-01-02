@@ -5,41 +5,57 @@ import styles from "./index.module.css";
 export default function Home() {
   const [regexInput, setRegexInput] = useState("");
   const [result, setResult] = useState();
+  const [explaination, setExplaination] = useState();
 
+  //Makes a call to the API we've defined
   async function onSubmit(event) {
     event.preventDefault();
-    const response = await fetch("/api/generate", {
+    const regexResponse = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ regex: regexInput }),
+      body: JSON.stringify({ regexPrompt: regexInput }),
     });
-    const data = await response.json();
-    setResult(data.result);
+    const regexData = await regexResponse.json();
+    console.log(regexData);
+    setResult(regexData.result);
     setRegexInput("");
+    
+    const explainationResponse = await fetch("/api/explain", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ regexCode: regexData.result }),
+    });
+    const explainationData = await explainationResponse.json();
+    console.log(explainationData);
+    setExplaination(explainationData.result);
   }
 
   return (
     <div>
       <Head>
-        <title>RegEx for...</title>
+        <title>RegEx Generator</title>
       </Head>
 
       <main className={styles.main}>
-        <h1>Regex for...</h1>
+        <h1>Regex Generator</h1>
         <p>Type what you would like to match in your text:</p>
         <form onSubmit={onSubmit}>
           <input
             type="text"
             name="regex"
-            placeholder="every 'f' in a word that begins a sentence"
+            placeholder="an Aussie phone number"
             value={regexInput}
             onChange={(e) => setRegexInput(e.target.value)}
           />
           <input type="submit" value="Generate RegEx" />
         </form>
         <div className={styles.result}>{result}</div>
+        <br></br>
+        <div>{explaination}</div>
       </main>
     </div>
   );

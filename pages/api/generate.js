@@ -8,16 +8,16 @@ const openai = new OpenAIApi(configuration);
 export default async function (req, res) {
   const completion = await openai.createCompletion({
     model: "text-davinci-002",
-    prompt: generatePrompt(req.body.regex),
-    temperature: 0.2,
+    prompt: generatePrompt(req.body.regexPrompt),
+    max_tokens: 50,
+    temperature: 0,
   });
-  res.status(200).json({ result: completion.data.choices[0].text });
+
+  res.status(200).json({
+    result: completion.data.choices[0].text,
+  });
 }
 
-function generatePrompt(regex) {
-  return `Write me regular expression code. I want to match ${regex}. Write your explaination in a seperate paragraph.
-  
-  RegEx: every f in a word that does not begin a sentence
-  Answer: [^.!?\s][fF]|^[fF]
-    Explaination: ...`;
+function generatePrompt(regexPrompt) {
+  return `Write me a regular expression. I want to match ${regexPrompt}. Do not explain the code. Only tell me the code.`;
 }
