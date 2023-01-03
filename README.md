@@ -8,4 +8,5 @@ TODO:
 
 To use:
 1. clone the repo
-2. npm run dev
+2. npm install
+3. npm run dev
