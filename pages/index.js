@@ -41,7 +41,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Regex Generator</h1>
+        <h1>RegEx Generator</h1>
         <p>Type what you would like to match in your text:</p>
         <form onSubmit={onSubmit}>
           <input
@@ -54,8 +54,7 @@ export default function Home() {
           <input type="submit" value="Generate RegEx" />
         </form>
         <div className={styles.result}>{result}</div>
-        <br></br>
-        <div>{explaination}</div>
+        <div className={styles.explaination}>{explaination}</div>
       </main>
     </div>
   );

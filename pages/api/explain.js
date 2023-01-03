@@ -20,7 +20,7 @@ export default async function (req, res) {
 
 function generateExplaination(regex) {
   return (
-    "Explain the regex code I provide as if I wanted to learn regex. The code is: " +
+    "I want you to act as a highschool teacher. I will provide regex code and you will reply with an explaination of the code. The explaination must cover each element of the code. The code is: " +
     regex
   );
 }
