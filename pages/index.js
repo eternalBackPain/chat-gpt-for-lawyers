@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { useState } from "react";
+import explain from "./api/explain";
 import styles from "./index.module.css";
 
 export default function Home() {
   const [regexInput, setRegexInput] = useState("");
   const [result, setResult] = useState();
-  const [explaination, setExplaination] = useState();
+  const [explaination, setExplaination] = useState("");
 
   //Makes a call to the API we've defined
   async function onSubmit(event) {
@@ -21,7 +22,7 @@ export default function Home() {
     console.log(regexData);
     setResult(regexData.result);
     setRegexInput("");
-    
+
     const explainationResponse = await fetch("/api/explain", {
       method: "POST",
       headers: {
@@ -30,7 +31,7 @@ export default function Home() {
       body: JSON.stringify({ regexCode: regexData.result }),
     });
     const explainationData = await explainationResponse.json();
-    console.log(explainationData);
+    console.log(explainationData.result);
     setExplaination(explainationData.result);
   }
 
@@ -54,7 +55,16 @@ export default function Home() {
           <input type="submit" value="Generate RegEx" />
         </form>
         <div className={styles.result}>{result}</div>
-        <div className={styles.explaination}>{explaination}</div>
+        <div className={styles.explaination}>
+          {
+            (explaination.length > 0 && (
+              <>
+                <b>Explaination: </b>
+              </>
+            ))
+          }
+          {explaination}
+        </div>
       </main>
     </div>
   );
