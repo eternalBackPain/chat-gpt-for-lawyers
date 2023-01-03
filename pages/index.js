@@ -58,7 +58,7 @@ export default function Home() {
         <div className={styles.explaination}>
           {explaination.length > 0 && (
             <>
-              <b>Explaination: </b>
+              <b>Explanation: </b>
             </>
           )}
           {explaination}
