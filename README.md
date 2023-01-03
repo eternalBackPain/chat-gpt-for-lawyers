@@ -6,3 +6,5 @@ To use:
 1. clone the repo
 2. npm install
 3. npm run dev
+
+![](2023-01-03-16-09-52.png)
