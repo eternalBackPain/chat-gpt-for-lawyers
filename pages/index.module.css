@@ -69,3 +69,18 @@
   padding: 12px 16px;
   margin-top: 40px;
 }
+
+.main .socials {
+  padding: 12px 16px;
+  margin-top: 40px;
+  text-align: center;
+  margin: auto; /* Center the div */
+  justify-content: center; /* Center the div horizontally */
+}
+
+.main a {
+  margin: auto; /* Center the div */
+  padding: 12px 16px;
+
+}
+

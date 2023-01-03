@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
-import explain from "./api/explain";
-import styles from "./index.module.css";
+import Footer from "./components/Footer";
+import styles from "./index.module.css"
 
 export default function Home() {
   const [regexInput, setRegexInput] = useState("");
@@ -56,15 +56,14 @@ export default function Home() {
         </form>
         <div className={styles.result}>{result}</div>
         <div className={styles.explaination}>
-          {
-            (explaination.length > 0 && (
-              <>
-                <b>Explaination: </b>
-              </>
-            ))
-          }
+          {explaination.length > 0 && (
+            <>
+              <b>Explaination: </b>
+            </>
+          )}
           {explaination}
         </div>
+        <Footer />
       </main>
     </div>
   );
