@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import styles from "./index.module.css"
+import { AnalyticsWrapper } from './components/analytics';
 
 export default function Home() {
   const [regexInput, setRegexInput] = useState("");
@@ -64,6 +65,7 @@ export default function Home() {
           {explaination}
         </div>
         <Footer />
+        <AnalyticsWrapper />
       </main>
     </div>
   );
