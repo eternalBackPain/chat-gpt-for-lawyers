@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import Footer from "./components/Footer";
-import styles from "./index.module.css"
-import { AnalyticsWrapper } from './components/analytics';
+import styles from "./index.module.css";
+import { AnalyticsWrapper } from "./components/analytics";
 
 export default function Home() {
   const [regexInput, setRegexInput] = useState("");
@@ -40,6 +40,16 @@ export default function Home() {
     <div>
       <Head>
         <title>RegEx Generator</title>
+        <meta
+          name="description"
+          content="Easily generate regular expressions by describing in natural language what you would like to match"
+        />
+        <meta property="og:title" content="RegEx Generator" />
+        <meta
+          property="og:description"
+          content="Easily generate regular expressions by describing in natural language what you would like to match"
+        />
+        <meta property="og:type" content="website" />
       </Head>
 
       <main className={styles.main}>
